@@ -8,8 +8,14 @@ trigger:
 pool:
   mypool
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: terraformsetup
+    jobs:
+      - job: terraformsetup
+        steps:
+          - task: TerraformInstaller@1
+            inputs:
+              terraformVersion: 'latest'
+
 
 
